@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-const val TIME_TO_SURPRISE = "07-JUL-2018 00:15:00"
+const val TIME_TO_SURPRISE = "25-DEC-2018 00:15:00"
 lateinit var ringtoneAlarm:Ringtone
 
 fun Context.setSurprise(dateTime: String = TIME_TO_SURPRISE) {
@@ -47,9 +47,9 @@ fun Context.setSurprise(dateTime: String = TIME_TO_SURPRISE) {
 fun Context.showSurprise() {
 
     val intent = Intent(Intent.ACTION_VIEW)
-    intent.data = Uri.parse("http://anju.sarathhari.com")
+    intent.data = Uri.parse("http://github.com") //  <<== Url to be opened upon notification click
     val pIntent = PendingIntent.getActivity(this, 0, intent, 0)
-    val message = "Hey Anju, Sarath is planning something for you. Let's go?"
+    val message = "Hey A, B has planned something for you. Let's go?" // <<== Notification content
     val notification = NotificationCompat.Builder(this, "default")
              //.setTicker("BDay")
              .setContentTitle("Surprise")
