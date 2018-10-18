@@ -22,7 +22,7 @@ import java.util.*
 
 
 const val TIME_TO_SURPRISE = "25-DEC-2018 00:15:00"
-lateinit var ringtoneAlarm:Ringtone
+lateinit var ringtoneAlarm: Ringtone
 
 fun Context.setSurprise(dateTime: String = TIME_TO_SURPRISE) {
     Log.d("NotifyHelper", "setSurprise() called")
@@ -53,8 +53,8 @@ fun Context.showSurprise() {
     val pIntent = PendingIntent.getActivity(this, 0, intent, 0)
     val message = "Hey A, B has planned something for you. Let's go?" // <<== Notification content
     val notification = NotificationCompat.Builder(this, "default")
-             //.setTicker("BDay")
-             .setContentTitle("Surprise")
+            //.setTicker("BDay")
+            .setContentTitle("Surprise")
             .setColor(Color.RED)
             .setContentIntent(pIntent)
             .setContentText(message)
@@ -68,8 +68,7 @@ fun Context.showSurprise() {
 
     val nm = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     nm.notify(1, notification)
-    Log.d("NotifyHelper", "onReceive: Surpriseeeee!!!")
-    //Toast.makeText(this, "Surpriseeeee!!!", Toast.LENGTH_LONG).show()
+    Log.d("NotifyHelper", "onReceive: Surprise!!!")
 
     val alarmTone = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
     ringtoneAlarm = RingtoneManager.getRingtone(applicationContext, alarmTone)
