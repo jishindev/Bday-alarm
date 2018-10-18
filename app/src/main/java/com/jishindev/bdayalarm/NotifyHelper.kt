@@ -1,6 +1,7 @@
 package com.jishindev.bdayalarm
 
 import android.app.AlarmManager
+import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.ComponentName
@@ -11,6 +12,7 @@ import android.graphics.Color
 import android.media.Ringtone
 import android.media.RingtoneManager
 import android.net.Uri
+import android.os.Build
 import android.support.v4.app.AlarmManagerCompat
 import android.support.v4.app.NotificationCompat
 import android.util.Log
@@ -72,4 +74,18 @@ fun Context.showSurprise() {
     val alarmTone = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
     ringtoneAlarm = RingtoneManager.getRingtone(applicationContext, alarmTone)
     ringtoneAlarm.play()
+}
+
+fun Context.createNotificationChannel() {
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val name = "default"
+        val description = "All default notifications"
+        val importance = NotificationManager.IMPORTANCE_HIGH
+        val channel = NotificationChannel(name, name, importance)
+        channel.description = description
+
+        val notificationManager = getSystemService(NotificationManager::class.java)
+        notificationManager.createNotificationChannel(channel)
+    }
 }

@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
 
+        createNotificationChannel()
         setSurprise(dateTime)
 
         tvDateTime?.text = TIME_TO_SURPRISE
